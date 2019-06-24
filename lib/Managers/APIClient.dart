@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class APIClient {
  Future<Movies> fetchMovies(int page) async {
    print("Fetch movies of page: #" + page.toString());
-    var url = Constants.MOVIES_BASEURL + page.toString();
+    var url = Constants.moviesBaseurl + page.toString();
     var response = await http.get(url);
      Map<String, dynamic> data = json.decode(response.body);
       var movies = Movies.fromJson(data);

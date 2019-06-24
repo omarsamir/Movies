@@ -22,9 +22,6 @@ class MovieDetailsState extends State<MovieDetails> {
   @override
   Widget build(BuildContext context) {
     _viewWidth = MediaQuery.of(context).size.width;
-    var image = new Image(
-      image: AssetImage('images/glass.jpg'),
-    );
 
     return DefaultTabController(
       length: 2,
@@ -56,7 +53,7 @@ class MovieDetailsState extends State<MovieDetails> {
 
   Widget movieSummary() {
     var movieImage = Image(
-      image: NetworkImage(Constants.MOVIES_IMAGES_URL + movie.posterPath,
+      image: NetworkImage(Constants.moviesImagesURL + movie.posterPath,
           scale: 1.0),
       height: 200,
       width: 200,
@@ -80,7 +77,9 @@ class MovieDetailsState extends State<MovieDetails> {
               maxLines: 3,
             ),
             Padding(padding: EdgeInsets.all(5.0)),
-            Text('Original Language: '+ movie.originalLanguage)
+            Text('Original language: '+ movie.originalLanguage),
+            Padding(padding: EdgeInsets.all(5.0)),
+            Text('Release date: '+ movie.releaseDate)
           ],
         ),
       ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:english_words/english_words.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:my_first_app/Model/Movies.dart';
 import 'package:my_first_app/Support_files/Constants.dart';
@@ -14,8 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class FirstPage extends State<HomePage> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
   double _viewWidth = 0;
   APIClient apiClient = APIClient();
   List<Results> movies = new List<Results>();
@@ -65,7 +62,11 @@ class FirstPage extends State<HomePage> {
           }
         }
       },
-      child: ListView.builder(
+      child:   
+      
+      Scrollbar(
+        child: ListView.builder(
+          itemCount: movies.length,
           padding: const EdgeInsets.all(5.0),
           itemBuilder: /*1*/ (context, i) {
             if (i < (movies.length - 1) &&
@@ -78,6 +79,8 @@ class FirstPage extends State<HomePage> {
               return _buildRow(movies[i]);
             }
           }),
+      ),
+      
     );
   }
 
@@ -85,7 +88,7 @@ class FirstPage extends State<HomePage> {
 
 var poster ;
 if(movie.posterPath != null){
-    poster =  NetworkImage(Constants.MOVIES_IMAGES_URL + movie.posterPath,
+    poster =  NetworkImage(Constants.moviesImagesURL + movie.posterPath,
           scale: 1.0);
 } else {
     poster = AssetImage("images/fa-image.png");
@@ -133,7 +136,7 @@ if(movie.posterPath != null){
     );
 
     var movieDate = Text(
-      '15-07-2019',
+      movie.releaseDate,
       style: new TextStyle(
         fontSize: 15,
         color: Colors.black,
@@ -163,7 +166,6 @@ if(movie.posterPath != null){
       children: <Widget>[
         GestureDetector(
           onTap: () {
-            print("object TTTTT");
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MovieDetails(movie)),
