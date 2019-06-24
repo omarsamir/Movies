@@ -166,7 +166,7 @@ if(movie.posterPath != null){
             print("object TTTTT");
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MovieDetails()),
+              MaterialPageRoute(builder: (context) => MovieDetails(movie)),
             );
           },
           child: Row(
