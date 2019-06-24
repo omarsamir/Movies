@@ -43,11 +43,36 @@ class MovieDetailsState extends State<MovieDetails> {
         ),
         body: TabBarView(
           children: [
-            movieSummary(),
+            scrollableMoviesSummary(),
             movieDescription(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget scrollableMoviesSummary() {
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: viewportConstraints.maxHeight,
+            ),
+            child:
+            Container(
+              alignment: Alignment.topCenter,
+              child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                movieSummary(),
+              ],
+            ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -59,41 +84,42 @@ class MovieDetailsState extends State<MovieDetails> {
       width: 200,
       fit: BoxFit.fill,
     );
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Padding(padding: EdgeInsets.all(12.0)),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return SingleChildScrollView(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(padding: EdgeInsets.all(12.0)),
-            movieImage,
-            Padding(padding: EdgeInsets.all(5.0)),
-            AutoSizeText(
-              movie.title,
-              style: TextStyle(fontSize: 15.0),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 3,
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(padding: EdgeInsets.all(12.0)),
+                movieImage,
+                Padding(padding: EdgeInsets.all(5.0)),
+                AutoSizeText(
+                  movie.title,
+                  style: TextStyle(fontSize: 15.0),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                ),
+                Padding(padding: EdgeInsets.all(5.0)),
+                Text('Original language: ' + movie.originalLanguage),
+                Padding(padding: EdgeInsets.all(5.0)),
+                Text('Release date: ' + movie.releaseDate)
+              ],
             ),
-            Padding(padding: EdgeInsets.all(5.0)),
-            Text('Original language: '+ movie.originalLanguage),
-            Padding(padding: EdgeInsets.all(5.0)),
-            Text('Release date: '+ movie.releaseDate)
           ],
         ),
-      ],
-    );
+      );
   }
 
-  Widget movieDescription (){
+  Widget movieDescription() {
     var movieDescription = Container(
       // padding: EdgeInsets.all(10.0),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minWidth: _viewWidth * 0.0,
           maxWidth: _viewWidth * 0.95,
-          
         ),
         child: AutoSizeText(
           movie.overview,
