@@ -63,20 +63,62 @@ class Results {
       this.releaseDate});
 
   Results.fromJson(Map<String, dynamic> json) {
-    voteCount = json['vote_count'];
-    id = json['id'];
-    video = json['video'];
-    // voteAverage = json['vote_average'];
-    title = json['title'];
-    popularity = json['popularity'];
-    posterPath = json['poster_path'];
-    originalLanguage = json['original_language'];
-    originalTitle = json['original_title'];
-    genreIds = json['genre_ids'].cast<int>();
-    backdropPath = json['backdrop_path'];
-    adult = json['adult'];
-    overview = json['overview'];
-    releaseDate = json['release_date'];
+    if (json['vote_count'] != null){
+      voteCount = json['vote_count'];
+    }
+    if(json['id'] != null){
+      id = json['id'];
+    }
+    
+    if(json['video'] != null){
+       video = json['video'];
+    }
+
+    if(json['vote_average'] != null){
+      voteAverage = json['vote_average'].toDouble();
+    }
+    
+    if(json['title'] != null){
+       title = json['title'];
+    }
+   
+    if(json['popularity'] != null){
+      popularity = json['popularity'].toDouble();;
+    }
+    
+    if(json['poster_path'] != null){
+      posterPath = json['poster_path'];
+    }
+    
+    
+    if(json['original_language'] != null){
+      originalLanguage = json['original_language'];
+    }
+    
+    if(json['original_title'] != null){
+      originalTitle = json['original_title'];
+    }
+    
+    if(json['genre_ids'].cast<int>() != null){
+      genreIds = json['genre_ids'].cast<int>();
+    }
+    
+    if(json['backdrop_path'] != null){
+       backdropPath = json['backdrop_path'];
+    }
+   
+    if(json['adult'] != null){
+       adult = json['adult'];
+    }
+   
+    if(json['overview'] != null){
+      overview = json['overview'];
+    }
+    
+    if(json['release_date'] != null){
+      releaseDate = json['release_date'];
+    }
+    
   }
 
   Map<String, dynamic> toJson() {
