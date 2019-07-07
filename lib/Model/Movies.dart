@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 class Movies {
   int page = 0;
   int totalResults = 0;
@@ -45,6 +47,7 @@ class Results {
   bool adult = false;
   String overview = "";
   String releaseDate = "";
+  String platform = Platform.isAndroid?"Android":"iOS";
 
   Results(
       {this.voteCount,
@@ -137,6 +140,7 @@ class Results {
     data['adult'] = this.adult;
     data['overview'] = this.overview;
     data['release_date'] = this.releaseDate;
+    data['platform'] = this.platform;
     return data;
   }
 }

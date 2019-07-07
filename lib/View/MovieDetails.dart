@@ -28,7 +28,8 @@ class MovieDetailsState extends State<MovieDetails>
   @override
   void initState() {
     super.initState();
-addDescriptionToFireStore();
+    // Uncomment to activate firestore persisting
+    // addDescriptionToFireStore(); 
     controller =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
 
