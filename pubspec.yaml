@@ -29,9 +29,9 @@ dependencies:
   modal_progress_hud: ^0.1.3
   rxdart: ^0.22.0
   incrementally_loading_listview:
-  firebase_core: ^0.3.0  # add dependency for Firebase Core
-  firebase_analytics: ^1.0.4  # add dependency for Google Analytics for Firebase
-  cloud_firestore: ^0.9.0 # add this line
+  firebase_core: # add dependency for Firebase Core
+  # firebase_analytics:  # add dependency for Google Analytics for Firebase
+  cloud_firestore:  # add this line
 
 dev_dependencies:
   flutter_test:

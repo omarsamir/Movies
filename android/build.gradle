@@ -6,6 +6,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.google.gms:google-services:4.2.0'   // new
     }
 }
 
@@ -28,27 +29,27 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-buildscript {
+// buildscript {
 
-  repositories {
-    // Check that you have the following line (if not, add it):
-    google()  // Google's Maven repository
-  }
+//   repositories {
+//     // Check that you have the following line (if not, add it):
+//     google()  // Google's Maven repository
+//   }
 
-  // ...
-  dependencies {
-    // ...
+//   // ...
+//   dependencies {
+//     // ...
 
-    // Add the following line:
-    classpath 'com.google.gms:google-services:3.2.1'  // Google Services plugin
-  }
-}
-allprojects {
-  // ...
+//     // Add the following line:
+//     classpath 'com.google.gms:google-services:3.2.1'  // Google Services plugin
+//   }
+// }
+// allprojects {
+//   // ...
 
-  repositories {
-    // Check that you have following line (if not, add it):
-    google()  // Google's Maven repository
-    // ...
-  }
-}
+//   repositories {
+//     // Check that you have following line (if not, add it):
+//     google()  // Google's Maven repository
+//     // ...
+//   }
+// }
