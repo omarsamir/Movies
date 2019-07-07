@@ -102,7 +102,7 @@ class Results {
       originalTitle = json['original_title'];
     }
     
-    if(json['genre_ids'].cast<int>() != null){
+    if(json['genre_ids'] != null){
       genreIds = json['genre_ids'].cast<int>();
     }
     

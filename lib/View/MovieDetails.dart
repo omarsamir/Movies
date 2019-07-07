@@ -5,6 +5,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/animation.dart';
 import 'package:my_first_app/View/LogoApp.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:my_first_app/Managers/Database.dart';
+import 'package:sqflite/sqlite_api.dart' as prefix0;
 
 class MovieDetails extends StatefulWidget {
   Results movie = new Results();
@@ -28,6 +30,9 @@ class MovieDetailsState extends State<MovieDetails>
   @override
   void initState() {
     super.initState();
+    // addMovieToSQLiteDB();
+    // getFirstMovie();
+    
     // Uncomment to activate firestore persisting
     // addDescriptionToFireStore(); 
     controller =
@@ -161,14 +166,20 @@ Widget flutterLogoAnimation() {
 
 
 void addDescriptionToFireStore(){
-  CollectionReference dbMovies = Firestore.instance.collection('Movies');
-
+CollectionReference dbMovies = Firestore.instance.collection('Movies');
 Firestore.instance.runTransaction((Transaction tx) async {
   print("ADD Movie : " + this.movie.title + "To Firestore");
   await dbMovies.add(this.movie.toJson());
 });
 }
 
+void addMovieToSQLiteDB(){
+  DBProvider.db.newMovie(this.movie);
+}
+
+void getFirstMovie(){
+  DBProvider.db.getClient(1);
+}
 
   Widget movieDescription() {
     var movieDescription = Container(

@@ -32,8 +32,8 @@ dependencies:
   firebase_core: # add dependency for Firebase Core
   # firebase_analytics:  # add dependency for Google Analytics for Firebase
   cloud_firestore:  # add this line
-  sqflite:
-  path:
+  sqflite: any
+  path_provider: any
 
 dev_dependencies:
   flutter_test:
